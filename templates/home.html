@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <p class="logo" onclick="window.location.href='/home'">Нумо</p>
+        <p class="nav-item" onclick="window.location.href='/new'">
+            <span class="material-symbols-outlined header-icon">
+                add_circle
+            </span>
+        </p>
+    </header>
+    <main class="main">
+        <div class="habits-cont">
+            {% for i in users_actives %}
+                <div class="habit">
+                    <div class="habit-header">
+                        <p class="habit-title">{{ i["title"] }}</p>
+                        <p class="habit-username">@{{ i["author"] }}</p>
+                    </div>
+                    <div class="habit-info">
+                        <p class="habit-text">{{ i["text"] }}</p>
+                        <p class="habit-city">
+                            <span class="material-symbols-outlined city">
+                                location_on
+                            </span>
+                            {{ i["city"] }}
+                        </p>
+                    </div>
+                    <p class="habit-date">{{ i["date"] }}</p>
+                    <div class="habit-footer">
+                        <p class="habit-report">
+                            <span class="material-symbols-outlined report">
+                                report
+                            </span>
+                        </p>
+                        <p class="habit-connect">
+                            <span class="material-symbols-outlined person-add">
+                                person_add
+                            </span>
+                            Приєднатись
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% include 'menu.html' %}
+    </main>
+</body>
+</html>
